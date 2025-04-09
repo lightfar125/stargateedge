@@ -3,69 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RemoteEdge | Fast Remote Access</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-</head>
-<body>
-  <header>
-    <h1>RemoteEdge</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </nav>
-  </header>
+  <title>RemoteEdge - Homepage</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
 
-  <main>
-    <h2>Welcome to RemoteEdge</h2>
-    <p>Accelerate your remote connections with edge computing and smart routing.</p>
-    <div id="visitor-info">
-      <p>Detecting visitor information...</p>
-    </div>
-  </main>
+    header {
+      background-color: #0052cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-  <footer>
-    &copy; 2025 RemoteEdge. All rights reserved.
-  </footer>
-
-  <script>
-    const visitorInfoDiv = document.getElementById('visitor-info');
-
-    // Step 2: Detect Visitor's IP and Country
-    axios.get('https://ipinfo.io/json?token=<YOUR_API_TOKEN>').then(response => {
-      const { ip, country } = response.data;
-      visitorInfoDiv.innerHTML = `<p>IP: ${ip}</p><p>Country: ${country}</p>`;
-
-      // Step 3: Ping Nearby CDN and Telco Gateways
-      const cdnGateways = [
-        'https://cdn1.example.com/ping',
-        'https://cdn2.example.com/ping',
-        // Add more CDN gateway URLs
-      ];
-
-      let pingResults = [];
-
-      cdnGateways.forEach(url => {
-        const start = performance.now();
-        axios.get(url).then(() => {
-          const latency = performance.now() - start;
-          pingResults.push({ url, latency });
-
-          if (pingResults.length === cdnGateways.length) {
-            // Step 4: Display the Results
-            pingResults.sort((a, b) => a.latency - b.latency);
-            const bestGateway = pingResults[0];
-            visitorInfoDiv.innerHTML += `<p>Best CDN Gateway: ${bestGateway.url} (Ping: ${bestGateway.latency}ms)</p>`;
-          }
-        });
-      });
-    }).catch(error => {
-      visitorInfoDiv.innerHTML = `<p>Error detecting visitor information.</p>`;
-      console.error(error);
-    });
-  </script>
-</body>
-</html>
+    nav {
+      display: flex;
+      justify-content:
