@@ -3,111 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RemoteEdge - Homepage</title>
+  <title>Ping Test – RemoteEdge</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
-
-    header {
-      background-color: #0052cc;
-      color: white;
-      padding: 20px;
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 40px;
+      background: #f0f4f8;
     }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #003d99;
-      padding: 10px 0;
+    h1 { color: #333; }
+    .ping-box {
+      margin-top: 30px;
     }
-
-    nav a {
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 10px;
+      background: #0052cc;
       color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      border: none;
+      border-radius: 5px;
     }
-
-    nav a:hover {
-      color: #ffdd57;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      line-height: 1.6;
+    .result {
+      margin-top: 20px;
       font-size: 1.1em;
-      text-align: center;
     }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #e6e6e6;
-      color: #666;
-      font-size: 0.9em;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
-
-      nav a {
-        margin: 10px 0;
-      }
+    #ip-address {
+      font-weight: bold;
+      color: #444;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to RemoteEdge</h1>
-    <p>Fast, Secure, and Smarter Edge Connectivity</p>
-  </header>
+  <h1>Welcome to RemoteEdge Ping Test</h1>
+  <p>Your Public IP: <span id="ip-address">Detecting...</span></p>
 
-  <nav>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="pricing.html">Pricing / Plans</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-  </nav>
+  <div class="ping-box">
+    <button onclick="pingSite('https://www.google.com')">Ping Google</button>
+    <button onclick="pingSite('https://www.amazon.com')">Ping Amazon</button>
+    <button onclick="pingSite('https://www.facebook.com')">Ping Facebook</button>
+  </div>
 
-  <main>
-    <h2>Your Edge, Optimized</h2>
-    <p>
-      RemoteEdge is built to accelerate and secure your remote access experience.
-      Whether you're a business, freelancer, or student – we deliver top-notch
-      speed and reliability using advanced routing and CDN technologies.
-    </p>
-    <p>
-      Explore our features, pick a plan that fits you, and get started in minutes.
-    </p>
-  </main>
+  <div class="result" id="ping-result"></div>
 
-  <footer>
-    &copy; 2025 RemoteEdge. All rights reserved.
-  </footer>
+  <script>
+    // Get visitor IP using ipify
+    fetch('https://api64.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ip-address').innerText = data.ip;
+      });
+
+    function pingSite(url) {
+      const start = performance.now();
+      fetch(url, { mode: 'no-cors' })  // no-cors avoids CORS issues
+        .then(() => {
+          const end = performance.now();
+          const latency = Math.round(end - start);
+          document.getElementById('ping-result').innerText = 
+            `Ping to ${url} took ~${latency} ms`;
+        })
+        .catch(() => {
+          const end = performance.now();
+          const latency = Math.round(end - start);
+          document.getElementById('ping-result').innerText = 
+            `Ping to ${url} may be blocked, estimated time: ~${latency} ms`;
+        });
+    }
+  </script>
 
 </body>
 </html>
