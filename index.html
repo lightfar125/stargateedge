@@ -1,182 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RemoteEdge – Fast, Secure, Smart</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stargate Edge CDN - Speed Up Your Cloud Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
-
-    header {
-      background-color: #0052cc;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #003d99;
-      padding: 10px 0;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ffdd57;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 1.1em;
-      text-align: center;
-    }
-
-    .section {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 1.5em;
-      margin-bottom: 15px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin: 10px;
-      background-color: #0052cc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #003d99;
-    }
-
-    .result {
-      margin-top: 20px;
-      font-size: 1em;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #e6e6e6;
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
-
-      nav a {
-        margin: 10px 0;
-      }
-    }
+    body { margin: 0; font-family: 'Roboto', sans-serif; background: #f4f6f9; color: #333; }
+    header, section, footer { padding: 20px; text-align: center; }
+    .hero { background: #0d1a4f; color: white; padding: 80px 20px; }
+    .hero h1 { font-size: 2rem; }
+    .hero button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+    .features, .services, .core { background: white; margin: 20px auto; max-width: 960px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 20px; }
+    h2 { color: #0d1a4f; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+    .grid-item { padding: 20px; background: #f9fafe; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    footer { background: #0d1a4f; color: white; font-size: 0.9em; }
+    img.logo { height: 50px; }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Welcome to RemoteEdge</h1>
-    <p>Fast, Secure, and Smarter Edge Connectivity</p>
+  <header class="hero">
+    <img src="/assets/logo-stargate.png" alt="Stargate Edge Logo" class="logo">
+    <h1>Stargate Edge CDN is the strongest backing for cloud services</h1>
+    <p>Accelerate your access to cloud platforms globally with enterprise-level CDN and security features.</p>
+    <button>Get Started</button>
   </header>
 
-  <nav>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="pricing.html">Pricing / Plans</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-  </nav>
+  <section class="features">
+    <h2>Why Stargate Edge?</h2>
+    <div class="grid">
+      <div class="grid-item"><h3>Global Acceleration</h3><p>Fast access to cloud services via Cloudflare's edge network.</p></div>
+      <div class="grid-item"><h3>WAF & DDoS Protection</h3><p>Built-in security to protect your applications.</p></div>
+      <div class="grid-item"><h3>Enterprise SLA</h3><p>Guaranteed performance and uptime for critical workloads.</p></div>
+    </div>
+  </section>
 
-  <main>
-    <section class="section">
-      <h2>About RemoteEdge</h2>
-      <p>
-        RemoteEdge is your go-to solution for remote network acceleration and security. 
-        Designed for professionals, businesses, and educational institutions, 
-        we provide intelligent edge routing and CDN optimization.
-      </p>
-    </section>
+  <section class="services">
+    <h2>Flexible Service Advantages</h2>
+    <div class="grid">
+      <div class="grid-item"><h3>Cloud Acceleration</h3><p>Speed up SaaS and cloud apps using Stargate Edge CDN.</p></div>
+      <div class="grid-item"><h3>Mobile App Boost</h3><p>Improve mobile application performance worldwide.</p></div>
+      <div class="grid-item"><h3>Low Latency</h3><p>Enjoy low latency and stable connections for remote users.</p></div>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>Your Public IP</h2>
-      <p>Your IP: <strong id="ip-address">Detecting...</strong></p>
-    </section>
-
-    <section class="section">
-      <h2>Ping Test</h2>
-      <p>Test connection speed (HTTP round trip) to popular services:</p>
-      <div>
-        <button onclick="pingSite('https://www.google.com')">Ping Google</button>
-        <button onclick="pingSite('https://www.amazon.com')">Ping Amazon</button>
-        <button onclick="pingSite('https://www.facebook.com')">Ping Facebook</button>
-      </div>
-      <div class="result" id="ping-result"></div>
-    </section>
-  </main>
+  <section class="core">
+    <h2>Stargate Core Network</h2>
+    <p>We operate a globally distributed acceleration layer that integrates with Cloudflare Workers to bring you the fastest access possible for your enterprise or application.</p>
+    <img src="/assets/stargate-core-diagram.png" alt="Stargate Core Diagram" style="width:100%; max-width:600px;">
+  </section>
 
   <footer>
-    &copy; 2025 RemoteEdge. All rights reserved.
+    <p>&copy; 2025 Stargate Edge. All rights reserved.</p>
+    <p>Made for performance, built for the future.</p>
   </footer>
-
-  <script>
-    // Display visitor IP
-    fetch('https://api64.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('ip-address').innerText = data.ip;
-      });
-
-    // Ping Test using fetch
-    function pingSite(url) {
-      const start = performance.now();
-      fetch(url, { mode: 'no-cors' })
-        .then(() => {
-          const end = performance.now();
-          const latency = Math.round(end - start);
-          document.getElementById('ping-result').innerText =
-            `Ping to ${url} took ~${latency} ms.`;
-        })
-        .catch(() => {
-          const end = performance.now();
-          const latency = Math.round(end - start);
-          document.getElementById('ping-result').innerText =
-            `Ping to ${url} may be blocked. Estimated time: ~${latency} ms.`;
-        });
-    }
-  </script>
-
 </body>
 </html>
