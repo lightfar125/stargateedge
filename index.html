@@ -3,73 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ping Test – RemoteEdge</title>
+  <title>RemoteEdge – Fast, Secure, Smart</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #0052cc;
+      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 40px;
-      background: #f0f4f8;
     }
-    h1 { color: #333; }
-    .ping-box {
-      margin-top: 30px;
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #003d99;
+      padding: 10px 0;
+      flex-wrap: wrap;
     }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffdd57;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
     button {
       padding: 10px 20px;
       font-size: 1em;
-      cursor: pointer;
       margin: 10px;
-      background: #0052cc;
+      background-color: #0052cc;
       color: white;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
     }
+
+    button:hover {
+      background-color: #003d99;
+    }
+
     .result {
       margin-top: 20px;
-      font-size: 1.1em;
+      font-size: 1em;
     }
-    #ip-address {
-      font-weight: bold;
-      color: #444;
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #e6e6e6;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to RemoteEdge Ping Test</h1>
-  <p>Your Public IP: <span id="ip-address">Detecting...</span></p>
+  <header>
+    <h1>Welcome to RemoteEdge</h1>
+    <p>Fast, Secure, and Smarter Edge Connectivity</p>
+  </header>
 
-  <div class="ping-box">
-    <button onclick="pingSite('https://www.google.com')">Ping Google</button>
-    <button onclick="pingSite('https://www.amazon.com')">Ping Amazon</button>
-    <button onclick="pingSite('https://www.facebook.com')">Ping Facebook</button>
-  </div>
+  <nav>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing / Plans</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
 
-  <div class="result" id="ping-result"></div>
+  <main>
+    <section class="section">
+      <h2>About RemoteEdge</h2>
+      <p>
+        RemoteEdge is your go-to solution for remote network acceleration and security. 
+        Designed for professionals, businesses, and educational institutions, 
+        we provide intelligent edge routing and CDN optimization.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Your Public IP</h2>
+      <p>Your IP: <strong id="ip-address">Detecting...</strong></p>
+    </section>
+
+    <section class="section">
+      <h2>Ping Test</h2>
+      <p>Test connection speed (HTTP round trip) to popular services:</p>
+      <div>
+        <button onclick="pingSite('https://www.google.com')">Ping Google</button>
+        <button onclick="pingSite('https://www.amazon.com')">Ping Amazon</button>
+        <button onclick="pingSite('https://www.facebook.com')">Ping Facebook</button>
+      </div>
+      <div class="result" id="ping-result"></div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 RemoteEdge. All rights reserved.
+  </footer>
 
   <script>
-    // Get visitor IP using ipify
+    // Display visitor IP
     fetch('https://api64.ipify.org?format=json')
       .then(res => res.json())
       .then(data => {
         document.getElementById('ip-address').innerText = data.ip;
       });
 
+    // Ping Test using fetch
     function pingSite(url) {
       const start = performance.now();
-      fetch(url, { mode: 'no-cors' })  // no-cors avoids CORS issues
+      fetch(url, { mode: 'no-cors' })
         .then(() => {
           const end = performance.now();
           const latency = Math.round(end - start);
-          document.getElementById('ping-result').innerText = 
-            `Ping to ${url} took ~${latency} ms`;
+          document.getElementById('ping-result').innerText =
+            `Ping to ${url} took ~${latency} ms.`;
         })
         .catch(() => {
           const end = performance.now();
           const latency = Math.round(end - start);
-          document.getElementById('ping-result').innerText = 
-            `Ping to ${url} may be blocked, estimated time: ~${latency} ms`;
+          document.getElementById('ping-result').innerText =
+            `Ping to ${url} may be blocked. Estimated time: ~${latency} ms.`;
         });
     }
   </script>
